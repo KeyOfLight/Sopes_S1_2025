@@ -1,0 +1,1 @@
+/home/key/Escritorio/Ejemplo/AUX_SO1_S2_2024_FERRER/Contenido/ejemplos/rust_service/target/debug/rust_service: /home/key/Escritorio/Ejemplo/AUX_SO1_S2_2024_FERRER/Contenido/ejemplos/rust_service/src/main.rs
