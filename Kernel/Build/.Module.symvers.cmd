@@ -1,0 +1,1 @@
+savedcmd_/home/key/Escritorio/sopes_P1/Docker/Build/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/key/Escritorio/sopes_P1/Docker/Build/Module.symvers -T /home/key/Escritorio/sopes_P1/Docker/Build/modules.order -i Module.symvers -e 

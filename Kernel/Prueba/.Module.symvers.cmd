@@ -1,0 +1,1 @@
+savedcmd_/home/key/Escritorio/sopes_P1/Kernel/Prueba/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/key/Escritorio/sopes_P1/Kernel/Prueba/Module.symvers -T /home/key/Escritorio/sopes_P1/Kernel/Prueba/modules.order -i Module.symvers -e 

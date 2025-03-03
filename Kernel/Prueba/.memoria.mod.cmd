@@ -1,0 +1,1 @@
+savedcmd_/home/key/Escritorio/sopes_P1/Kernel/Prueba/memoria.mod := printf '%s\n'   memoria.o | awk '!x[$$0]++ { print("/home/key/Escritorio/sopes_P1/Kernel/Prueba/"$$0) }' > /home/key/Escritorio/sopes_P1/Kernel/Prueba/memoria.mod
