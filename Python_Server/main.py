@@ -56,7 +56,8 @@ def receive_logs(logs_proc: List[LogProcess]):
         
         for log in logs_proc:
             if log.container_id in container_ids_existentes:
-                raise HTTPException(status_code=400, detail=f"El container_id {log.container_id} ya está registrado.")
+                print(f"El container_id {log.container_id} ya está registrado. Ignorando log.")
+                continue  # Ignorar este log y pasar al siguiente
             nuevos_logs.append(log.dict())
         
         # Agregar los nuevos logs al archivo
