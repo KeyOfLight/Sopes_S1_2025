@@ -35,7 +35,19 @@ MODULE_INFO(retpoline, "Y");
 
 static const struct modversion_info ____versions[]
 __used __section("__versions") = {
-	{ 0x3ca1d81f, "single_open" },
+	{ 0x9ed12e20, "kmalloc_large" },
+	{ 0xcd0bbddf, "filp_open" },
+	{ 0xee85401f, "kernel_read" },
+	{ 0x5b332080, "filp_close" },
+	{ 0x1e6d26a8, "strstr" },
+	{ 0x349cba85, "strchr" },
+	{ 0x2d39b0a7, "kstrdup" },
+	{ 0x37a0cba, "kfree" },
+	{ 0xf0fdf6cb, "__stack_chk_fail" },
+	{ 0x3addb2e7, "remove_proc_entry" },
+	{ 0xbcab6ee6, "sscanf" },
+	{ 0x87a21cb3, "__ubsan_handle_out_of_bounds" },
+	{ 0x5c3c7387, "kstrtoull" },
 	{ 0x15ba50a6, "jiffies" },
 	{ 0x40c7247c, "si_meminfo" },
 	{ 0x2f9b7e16, "seq_printf" },
@@ -49,18 +61,21 @@ __used __section("__versions") = {
 	{ 0x53b954a2, "up_read" },
 	{ 0x54f14e33, "access_process_vm" },
 	{ 0x847442f5, "mmput" },
-	{ 0x37a0cba, "kfree" },
-	{ 0xf0fdf6cb, "__stack_chk_fail" },
-	{ 0x3addb2e7, "remove_proc_entry" },
+	{ 0xeb233a45, "__kmalloc" },
+	{ 0x9166fada, "strncpy" },
+	{ 0x754d539c, "strlen" },
+	{ 0xcbd4898c, "fortify_panic" },
 	{ 0x79ccc597, "seq_read" },
 	{ 0xbdfb6dbb, "__fentry__" },
 	{ 0x4f4ab2c1, "proc_create" },
 	{ 0x122c3a7e, "_printk" },
 	{ 0x5b8239ca, "__x86_return_thunk" },
+	{ 0x3ca1d81f, "single_open" },
+	{ 0x656e4a6e, "snprintf" },
 	{ 0x6ad2b3e, "module_layout" },
 };
 
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "737B602E399E8F7563B1ED1");
+MODULE_INFO(srcversion, "4FAF146C16AD2D82B030560");

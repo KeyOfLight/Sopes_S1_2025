@@ -1,1 +1,1 @@
-savedcmd_/home/key/Escritorio/sopes_P1/Kernel/Prueba/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/key/Escritorio/sopes_P1/Kernel/Prueba/Module.symvers -T /home/key/Escritorio/sopes_P1/Kernel/Prueba/modules.order -i Module.symvers -e 
+savedcmd_/home/key/Desktop/Universidad/SOPES_1/Sopes_P1_S1_2025/Kernel/Prueba/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/key/Desktop/Universidad/SOPES_1/Sopes_P1_S1_2025/Kernel/Prueba/Module.symvers -T /home/key/Desktop/Universidad/SOPES_1/Sopes_P1_S1_2025/Kernel/Prueba/modules.order -i Module.symvers -e 

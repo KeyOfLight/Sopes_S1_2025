@@ -1,0 +1,11 @@
+/home/key/Desktop/Universidad/SOPES_1/Sopes_P1_S1_2025/Contenedores_Rust/target/debug/deps/liburl-8dcc65987de65593.rmeta: /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/lib.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/host.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/origin.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/parser.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/path_segments.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/slicing.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/quirks.rs
+
+/home/key/Desktop/Universidad/SOPES_1/Sopes_P1_S1_2025/Contenedores_Rust/target/debug/deps/url-8dcc65987de65593.d: /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/lib.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/host.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/origin.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/parser.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/path_segments.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/slicing.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/quirks.rs
+
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/lib.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/host.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/origin.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/parser.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/path_segments.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/slicing.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/url-2.5.2/src/quirks.rs:

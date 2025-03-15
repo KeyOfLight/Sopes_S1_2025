@@ -1,0 +1,12 @@
+/home/key/Desktop/Universidad/SOPES_1/Sopes_P1_S1_2025/Contenedores_Rust/target/debug/deps/libhttparse-a20c8cb19e907248.rmeta: /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/lib.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/iter.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/macros.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/simd/mod.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/simd/swar.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/simd/sse42.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/simd/avx2.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/simd/runtime.rs
+
+/home/key/Desktop/Universidad/SOPES_1/Sopes_P1_S1_2025/Contenedores_Rust/target/debug/deps/httparse-a20c8cb19e907248.d: /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/lib.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/iter.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/macros.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/simd/mod.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/simd/swar.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/simd/sse42.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/simd/avx2.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/simd/runtime.rs
+
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/lib.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/iter.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/macros.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/simd/mod.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/simd/swar.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/simd/sse42.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/simd/avx2.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/httparse-1.9.4/src/simd/runtime.rs:

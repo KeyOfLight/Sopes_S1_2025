@@ -1,0 +1,11 @@
+/home/key/Desktop/Universidad/SOPES_1/Sopes_P1_S1_2025/Contenedores_Rust/target/debug/deps/libtinyvec-b413a2a8dff1eb14.rmeta: /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/lib.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/array.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/array/generated_impl.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/arrayvec.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/arrayvec_drain.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/slicevec.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/tinyvec.rs
+
+/home/key/Desktop/Universidad/SOPES_1/Sopes_P1_S1_2025/Contenedores_Rust/target/debug/deps/tinyvec-b413a2a8dff1eb14.d: /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/lib.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/array.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/array/generated_impl.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/arrayvec.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/arrayvec_drain.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/slicevec.rs /home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/tinyvec.rs
+
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/lib.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/array.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/array/generated_impl.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/arrayvec.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/arrayvec_drain.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/slicevec.rs:
+/home/key/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tinyvec-1.8.0/src/tinyvec.rs:

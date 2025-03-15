@@ -13,10 +13,10 @@ images=(
 
 #Opciones de estrés
 stress_types=(
-    "cpu"   # Consumo de CPU
-    "vm"    # Consumo de RAM
-    "io"    # Consumo de I/O
-    "hdd"   # Consumo de Disco
+    "cpu"   
+    "vm"    
+    "io"    
+    "hdd"   
 )
 
 

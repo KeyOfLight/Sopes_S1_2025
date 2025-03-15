@@ -1,1 +1,1 @@
-savedcmd_/home/key/Escritorio/sopes_P1/Kernel/Prueba/modules.order := {   echo /home/key/Escritorio/sopes_P1/Kernel/Prueba/memoria.o; :; } > /home/key/Escritorio/sopes_P1/Kernel/Prueba/modules.order
+savedcmd_/home/key/Desktop/Universidad/SOPES_1/Sopes_P1_S1_2025/Kernel/Prueba/modules.order := {   echo /home/key/Desktop/Universidad/SOPES_1/Sopes_P1_S1_2025/Kernel/Prueba/memoria.o; :; } > /home/key/Desktop/Universidad/SOPES_1/Sopes_P1_S1_2025/Kernel/Prueba/modules.order

@@ -1,1 +1,1 @@
-/home/key/Escritorio/Ejemplo/AUX_SO1_S2_2024_FERRER/Contenido/ejemplos/rust_service/target/debug/rust_service: /home/key/Escritorio/Ejemplo/AUX_SO1_S2_2024_FERRER/Contenido/ejemplos/rust_service/src/main.rs
+/home/key/Desktop/Universidad/SOPES_1/Sopes_P1_S1_2025/Contenedores_Rust/target/debug/rust_service: /home/key/Desktop/Universidad/SOPES_1/Sopes_P1_S1_2025/Contenedores_Rust/src/main.rs
