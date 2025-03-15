@@ -8,6 +8,10 @@ use reqwest::blocking::Client;
 use serde_json::Value;
 use serde_json::json;
 use chrono::Utc;
+use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::Arc;
+use signal_hook::consts::signal::{SIGINT, SIGTERM};
+use signal_hook::flag;
 
 // CREACIÓN DE STRUCT
 
@@ -63,44 +67,6 @@ impl Process {
         "N/A"
     }
 
-
-    // fn get_container_type(&self) -> String {
-    //     let container_id = self.get_container_id();
-    //     let file_path = format!("/var/lib/docker/containers/{}/config.v2.json", container_id);
-    
-    //     // let mut file = match File::open(&file_path) {
-    //     //     Ok(file) => file,
-    //     //     Err(err) => {
-    //     //         eprintln!("Error abriendo el archivo: {}", err);
-    //     //         return "cpu".to_string();
-    //     //     }
-    //     // };
-
-    //     let mut contents = String::new();
-    //     if let Err(err) = file.read_to_string(&mut contents) {
-    //         eprintln!("Error leyendo el archivo: {}", err);
-    //         return "cpu".to_string();
-    //     }
-    
-    //     let json: serde_json::Value = match serde_json::from_str(&contents) {
-    //         Ok(json) => json,
-    //         Err(err) => {
-    //             eprintln!("Error parseando JSON: {}", err);
-    //             return "cpu".to_string();
-    //         }
-    //     };
-    
-    //     if let Some(cmd) = json["Config"]["Cmd"].as_array() {
-    //         let cmd_values: Vec<String> = cmd.iter().filter_map(|c| c.as_str().map(String::from)).collect();
-    //         println!("Cmd: {:?}", cmd_values);
-    
-    //         // Devuelve el primer valor o "cpu" si no hay ninguno
-    //         return cmd_values.first().cloned().unwrap_or_else(|| "cpu".to_string());
-    //     } else {
-    //         println!("No se encontró la clave 'Cmd'");
-    //         return "cpu".to_string();
-    //     }
-    // }
 
     fn get_container_type(&self) -> String {
         let container_id = self.get_container_id();
@@ -160,6 +126,116 @@ impl Process {
     }
 
 
+    fn get_cpu_usage(&self) -> f64 {
+        let container_id = self.get_container_id();
+
+        let cgroup_path = format!(
+            "/sys/fs/cgroup/system.slice/docker-{}.scope/cpu.stat",
+            container_id
+        );
+    
+        let output = Command::new("sudo")
+            .arg("cat")
+            .arg(&cgroup_path)
+            .output();
+    
+    
+        let output = match output {
+            Ok(output) if output.status.success() => output.stdout,
+            Ok(output) => {
+                eprintln!(
+                    "Error ejecutando sudo cat: {}",
+                    String::from_utf8_lossy(&output.stderr)
+                );
+                return 0.0;
+            }
+            Err(err) => {
+                eprintln!("Error al ejecutar sudo: {}", err);
+                return 0.0;
+            }
+        };
+        
+        let contents = String::from_utf8_lossy(&output);
+
+        for line in contents.lines() {
+            if line.starts_with("usage_usec") {
+                if let Some(value) = line.split_whitespace().nth(1) {
+                    return value.parse::<u64>().unwrap_or(0) as f64 / 1_000_000.0;
+                }
+            }
+        }
+        0.0
+    }
+
+    fn get_disk_write(&self) -> String {
+        let container_id = self.get_container_id();
+    
+        let output = Command::new("docker")
+            .arg("stats")
+            .arg("--no-stream")
+            .arg("--format")
+            .arg("{{.BlockIO}}")  
+            .arg(container_id)
+            .output();
+    
+        match output {
+            Ok(output) if output.status.success() => {
+                let io_str = String::from_utf8_lossy(&output.stdout).trim().to_string();
+                
+                println!("Docker stats output: {}", io_str);
+    
+                let disk_write = io_str.split_whitespace()
+                    .nth(1) 
+                    .and_then(|s| s.parse::<u64>().ok())
+                    .unwrap_or(0); 
+                
+                
+                println!("Disk write value: {}", disk_write);
+    
+                disk_write.to_string()
+            }
+            _ => {
+                eprintln!("Error obteniendo escritura en disco con docker stats");
+                "0".to_string() 
+            }
+        }
+    }
+
+    fn get_io(&self) -> String {
+        let container_id = self.get_container_id();
+
+        let output = Command::new("docker")
+            .arg("stats")
+            .arg("--no-stream")
+            .arg("--format")
+            .arg("{{.NetIO}}")
+            .arg(container_id)
+            .output();
+
+        match output {
+            Ok(output) if output.status.success() => {
+                let io_str = String::from_utf8_lossy(&output.stdout).trim().to_string();
+                
+                // Imprime toda la salida de docker stats
+                println!("Docker stats output: {}", io_str);
+                io_str.to_string()
+                // let disk_write = io_str.split_whitespace()
+                //     .nth(2)
+                //     .and_then(|s| s.parse::<u64>().ok())
+                //     .unwrap_or(0); 
+                
+                // // Imprime el valor obtenido antes de regresarlo
+                // println!("Disk write value: {}", disk_write);
+
+                // disk_write.to_string() 
+            }
+            _ => {
+                eprintln!("Error obteniendo escritura en disco con docker stats");
+                "0".to_string() 
+            }
+        }
+    }
+
     
     fn get_container_name(&self) -> String {
         let container_id = self.get_container_id();
@@ -200,18 +276,6 @@ impl Process {
         };
     
         let cmd_array = json.get("Name");
-        // .and_then(|config| config.get("Cmd"))
-        // .and_then(|cmd| cmd.as_array());
-
-        // if let Some(cmd_array) = cmd_array {
-        //     let cmd_values: Vec<String> = cmd_array.iter().filter_map(|c| c.as_str().map(String::from)).collect();
-        //     println!("Name: {:?}", cmd_values);
-
-        //     if let Some(name) = json.get("Name").and_then(|v| v.as_str()) {
-        //         return name.trim_start_matches('/').to_string();
-        //     }
-        // }
-
         if let Some(name) = json.get("Name").and_then(|v| v.as_str()) {
             return name.trim_start_matches('/').to_string();
         }
@@ -394,15 +458,16 @@ fn analyzer( system_info:  SystemInfo) {
             "container_id": process.get_container_id(),
             "name": process.get_container_name().clone(),
             "memory_usage": process.memory_usage,
-            "cpu_usage": process.cpu_usage,
-            "vsz": 0 ,  // Ajustar si el dato no está disponible
-            "rss": 0,  // Ajustar si el dato no está disponible
-            "action": process.get_container_type(),  // Definir acción adecuada
-            "timestamp": Utc::now().to_rfc3339() // Timestamp en formato ISO8601
+            "cpu_usage": process.get_cpu_usage(),
+            "uso_disk": process.get_disk_write(),
+            "vsz": process.total_memory, 
+            "rss": process.free_memory, 
+            "io": process.get_io(),
+            "action": process.get_container_type(),  
+            "timestamp": Utc::now().to_rfc3339() 
         })
     }).collect();
     
-    // 🔹 Imprimir JSON antes de enviarlo para verificar formato
     println!("JSON formateado para enviar:");
     println!("{}", serde_json::to_string_pretty(&log_proc_list).unwrap());
     
@@ -440,9 +505,7 @@ fn read_proc_file(file_name: &str) -> io::Result<String> {
     let path  = Path::new("/proc").join(file_name);
     let mut file = File::open(path)?;
 
-    
     let mut content = String::new();
-
     
     file.read_to_string(&mut content)?;
 
@@ -467,18 +530,20 @@ fn is_container_running(container_id: &str) -> bool {
         return status.trim() == "true";
     }
 
-    // Retorna `false` si el comando falló
     false
 }
 
 fn main() {
 
     
+    let term_signal = Arc::new(AtomicBool::new(false));
+    flag::register(SIGTERM, Arc::clone(&term_signal)).unwrap();
+    flag::register(SIGINT, Arc::clone(&term_signal)).unwrap();
     
     let output = Command::new("sudo")
-    .args(&["docker-compose", "-f", "../Python_Server/docker-compose.yaml", "up", "--build", "-d"])
-    .output()
-    .expect("Failed to execute docker-compose");
+        .args(&["docker-compose", "-f", "../Python_Server/docker-compose.yaml", "up", "--build", "-d"])
+        .output()
+        .expect("Failed to execute docker-compose");
 
     if output.status.success() {
         println!("Docker Compose executed successfully!");
@@ -486,32 +551,35 @@ fn main() {
         eprintln!("Error executing Docker Compose: {:?}", output);
         return;
     }
-
-
-
-    // TODO: Utilizar algo para capturar la señal de terminación y matar el contenedor registro y cronjob.
-
-    loop {
-        
-        
+    
+    println!("Esperando señal de terminación...");
+    
+    while !term_signal.load(Ordering::Relaxed) {
         let system_info: Result<SystemInfo, _>;
-
-        
         let json_str = read_proc_file("sysinfo_201908327").unwrap();
-
-        
         system_info = parse_proc_to_struct(&json_str);
-
         
         match system_info {
-            Ok( info) => {
+            Ok(info) => {
                 analyzer(info);
             }
             Err(e) => println!("Failed to parse JSON: {}", e),
         }
-
         
         std::thread::sleep(std::time::Duration::from_secs(10));
+    }
+    
+    println!("Señal de terminación recibida. Deteniendo todos los contenedores de Docker...");
+    let stop_output = Command::new("sudo")
+        .arg("sh")
+        .arg("-c")
+        .arg("docker stop $(docker ps -a -q)")
+        .output()
+        .expect("Fallo al ejecutar el comando Docker");
+    if stop_output.status.success() {
+        println!("Contenedores detenidos correctamente.");
+    } else {
+        eprintln!("Error al detener los contenedores: {}", String::from_utf8_lossy(&stop_output.stderr));
     }
 
 }

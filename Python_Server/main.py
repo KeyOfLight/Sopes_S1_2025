@@ -23,7 +23,9 @@ class LogProcess(BaseModel):
     rss: int
     memory_usage: float
     cpu_usage: float
+    uso_disk: int
     action: str
+    io: str
     timestamp: str
 
 @app.get("/")
@@ -48,8 +50,16 @@ def receive_logs(logs_proc: List[LogProcess]):
             except (json.JSONDecodeError, FileNotFoundError):
                 logs = []  # Si hay un error, iniciamos un archivo nuevo
 
-        # Convertimos los objetos Pydantic a diccionarios y los agregamos
-        nuevos_logs = [log.dict() for log in logs_proc]
+        # Verificar si alguno de los container_id ya está registrado
+        container_ids_existentes = {log['container_id'] for log in logs}
+        nuevos_logs = []
+        
+        for log in logs_proc:
+            if log.container_id in container_ids_existentes:
+                raise HTTPException(status_code=400, detail=f"El container_id {log.container_id} ya está registrado.")
+            nuevos_logs.append(log.dict())
+        
+        # Agregar los nuevos logs al archivo
         logs.extend(nuevos_logs)
 
         # Guardamos el archivo con indentación para mejor lectura

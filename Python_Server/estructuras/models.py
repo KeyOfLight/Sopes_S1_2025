@@ -12,7 +12,10 @@ class LogProcess(BaseModel):
     rss: int
     memory_usage: float
     cpu_usage: float
+    uso_disk: int
+    io: str
     action: str
     timestamp: str
+
 
 
